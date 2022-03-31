@@ -1,3 +1,23 @@
+/*
+Cursus Mathematiques:
+**Primaire
+ajout de quantités
+chiffres entier
+nombres entier
+notion de décimale
+addition de nombres entiers
+soustraction de nombres entiers
+nombres négatifs
+nombres à virgule
+multiplication de nombres entiers
+division de nombres entiers
+**Secondaire
+
+
+
+
+*/
+
 export class Question {
   constructor() {}
   render() {
@@ -28,16 +48,26 @@ export class QCMHistoire extends Question {
 }
 
 export class AdditionMath extends Question {
-  constructor(max) {
+  constructor(min, max, apresvirgule) {
     super();
-    this.m_a = Math.floor(Math.random() * max);
-    this.m_b = Math.floor(Math.random() * max);
+    this.handleClick = this.handleClick.bind(this);
+    this.getData = this.getData.bind(this);
+
+    // FIXME: bug, attention, la multiplication par 'apresvirgule' peut donner des chiffre bizarres
+    this.m_a =
+      min +
+      Math.floor(Math.random() * (max - min) * apresvirgule) / apresvirgule;
+    this.m_b =
+      min +
+      Math.floor(Math.random() * (max - min) * apresvirgule) / apresvirgule;
   }
   getData(val) {
     console.warn(val.target.value);
+    this.m_result = val.target.value;
   }
   handleClick() {
-    console.warn("click !");
+    if (this.m_a + this.m_b === this.m_result) console.warn("Bravo");
+    else console.warn("Faux");
   }
 
   render() {

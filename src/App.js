@@ -4,7 +4,7 @@ import { QCMHistoire } from "./Question.js";
 import { AdditionMath } from "./Question.js";
 
 export default function App() {
-  q = new AdditionMath(10);
+  q = new AdditionMath(100, 1000, 100);
   return (
     <div className="App">
       <h1>Mathématiques</h1>
